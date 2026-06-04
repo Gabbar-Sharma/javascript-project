@@ -12,9 +12,8 @@ const addTodo = () => {
 };
 
 button.addEventListener("click", () => {
-  if (input.value === "" || input.value === " ") {
+  if (input.value === "" || input.value === " " || input.value.trim() === " ") {
     return;
   }
   addTodo();
-  if (input.value.trim() === " ") return;
 });
