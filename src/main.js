@@ -2,30 +2,38 @@ import "./style.css";
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 const list = document.querySelector("#ul");
-const listItem = document.querySelector("#listItem");
-
 
 const addTodo = () => {
-  const newListItem = document.createElement("listItem");
-  newListItem.innerText = input.value;
+  const newListItem = document.createElement("li");
+  const span = document.createElement("span");
+  const bigContainer = document.createElement("div");
+  const deleteBtn = document.createElement("button");
+  const editBtn = document.createElement("button");
+  const markBtn = document.createElement("button");
+
+  deleteBtn.innerText = "Delete";
+  editBtn.innerText = "Edit";
+  markBtn.innerText = "Mark";
+ 
+  newListItem.className =
+    "flex justify-between items-center bg-gray-200 p-3 rounded mb-2";
+  deleteBtn.className = "bg-red-500 text-white px-3 py-1 rounded";
+  editBtn.className = "bg-blue-500 text-white px-3 py-1 rounded";
+  markBtn.className = "bg-green-500 text-white px-3 py-1 rounded";
+
+  span.innerText = input.value;
+  bigContainer.append(deleteBtn, editBtn, markBtn);
   list.appendChild(newListItem);
-  input.value = " ";
-};
-const deleteTodo = () => {
-  const removeBtn = document.createElement("remove-btn");
-  removeBtn.innerText = "Delete";
-  list.appendChild(removeBtn);
-  
+  newListItem.appendChild(bigContainer);
+  newListItem.appendChild(span);
+  input.value = "";
 };
 
 button.addEventListener("click", () => {
-  if (input.value === "" || input.value === " " || input.value.trim() === " ") {
+   addTodo();
+   console.log("Button clicked");
+  if (input.value.trim() === "") {
     return;
   }
-  addTodo();
-  deleteTodo();
-
+  
 });
-
-
-
