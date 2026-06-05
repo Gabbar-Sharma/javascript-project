@@ -3,9 +3,7 @@ const input = document.querySelector("input");
 const button = document.querySelector("button");
 const list = document.querySelector("#ul");
 const listItem = document.querySelector("#listItem");
-const deleteButton = document.querySelector("#delete");
-const editButton = document.querySelector("#edit");
-const markButton = document.querySelector("#mark");
+
 
 const addTodo = () => {
   const newListItem = document.createElement("listItem");
@@ -14,7 +12,10 @@ const addTodo = () => {
   input.value = " ";
 };
 const deleteTodo = () => {
-  list.removeChild(list.lastChild);
+  const removeBtn = document.createElement("remove-btn");
+  removeBtn.innerText = "Delete";
+  list.appendChild(removeBtn);
+  
 };
 
 button.addEventListener("click", () => {
@@ -22,19 +23,9 @@ button.addEventListener("click", () => {
     return;
   }
   addTodo();
+  deleteTodo();
 
 });
-deleteButton.addEventListener("click", () => {
-  deleteTodo();
-});
-editButton.addEventListener("click", () => {
-  const lastListItem = list.currentChild;
-}
-);
-markButton.addEventListener("click", () => {
-  
-  listItem.style.textDecoration = "line-through";
- 
-}
-);
+
+
 
