@@ -14,12 +14,14 @@ const addTodo = () => {
   deleteBtn.innerText = "Delete";
   editBtn.innerText = "Edit";
   markBtn.innerText = "Mark";
- 
+
   newListItem.className =
     "flex d-block justify-between items-center bg-gray-200 p-3 w-full rounded mb-2";
-  deleteBtn.className = "cursor-pointer bg-red-500 text-white px-3 py-1 rounded";
+  deleteBtn.className =
+    "cursor-pointer bg-red-500 text-white px-3 py-1 rounded";
   editBtn.className = "cursor-pointer bg-blue-500 text-white px-3 py-1 rounded";
-  markBtn.className = "cursor-pointer bg-green-500 text-white px-3 py-1 rounded";
+  markBtn.className =
+    "cursor-pointer bg-green-500 text-white px-3 py-1 rounded";
   span.className = "text-gray-800 flex-1 break-words";
   bigContainer.className = "flex gap-2";
   span.innerText = input.value;
@@ -27,16 +29,27 @@ const addTodo = () => {
   list.appendChild(newListItem);
   newListItem.appendChild(span);
   newListItem.appendChild(bigContainer);
-  
+
   input.value = "";
+  deleteBtn.addEventListener("click", () => {
+    list.removeChild(newListItem);
+  });
+
+  editBtn.addEventListener("click", () => {
+    const newValue = prompt("Edit your todo:", span.innerText);
+    if (newValue !== null && newValue.trim() !== "") {
+      span.innerText = newValue;
+    }
+  });
+  markBtn.addEventListener("click", () => {
+    span.classList.toggle("line-through");
+  });
 };
 
 button.addEventListener("click", () => {
-  
-   console.log("Button clicked");
+  console.log("Button clicked");
   if (input.value.trim() === "" || input.value === null) {
     return;
   }
-   addTodo();
-  
+  addTodo();
 });
