@@ -28,8 +28,8 @@ const addTodo = () => {
   span.innerText = input.value;
   bigContainer.append(deleteBtn, editBtn, markBtn);
   list.appendChild(newListItem);
-  newListItem.appendChild(span);
-  newListItem.appendChild(bigContainer);
+  newListItem.append(span, bigContainer);
+
 
   // Clear the input field after adding the todo
 
